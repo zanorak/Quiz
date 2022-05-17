@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-lg">
+    <div class="row text-center">
+        <h1 class="display-2">Serious Quiz</h1>
+        <p class="lead">You'll never guess the answers</p>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="bg-light p-5 rounded-lg m-3">
+                <h3 class="text-center">{{ question.question }}</h3>
+                <hr>
+                <form method="post">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 align-items-start">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="answer" value="-1" hidden checked>
+                            </div>
+                            {% for answer in question.answers %}
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="answer" value="{{loop.index}}">{{answer}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-lg-2 d-flex align-items-end justify-content-end">
+                            <button type="submit" class="btn btn-primary">Next</button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

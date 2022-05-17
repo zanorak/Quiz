@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-lg">
+    <div class="row text-center">
+        <h1 class="display-2">Finished</h1>
+        <p class="lead">Elapsed Time: {{elapsedTime|int}} Seconds</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="bg-light p-5 rounded-lg m-3">
+            {% for i in session["answers"] %}
+                <strong>{{questions[loop.index0].question}}</strong>
+                {% if questions[loop.index0].correct == i|int %}
+                    <p class="text-success">
+                        You answered: {{ questions[loop.index0].answers[i|int-1] }}<br>
+                        You are correct
+                    </p>
+                {% else %}
+                    <p class="text-danger">
+                        You answered: 
+                        {% if i|int == -1 %}
+                            No Answer Selected
+                        {% else %}
+                            {{ questions[loop.index0].answers[i|int-1] }}
+                        {% endif %}<br>
+                        The correct answer is: {{ questions[loop.index0].answers[questions[loop.index0].correct - 1] }}
+                    </p>
+                {% endif %}
+            {% endfor %}
+            <a class="btn btn-primary" href="/retake" role="button">Retake Quiz</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

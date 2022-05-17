@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- This is supposed to stop the browser from caching the pages, 
+    but it does not seem to work. See the javascript at the end. -->
+  <meta name="Cache-Control" content="no-cache, max-age=0, must-revalidate, no-store">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="/static/bootstrap.min.js"></script>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  {% block content %}
+  {% endblock %}
+  <!-- found this by waj-er-rr on stackoverflow. It reloads the page 
+    if the browser back button is pressed this will cause the template 
+    to show the currQuest question again rather than the previous one -->
+  <script>
+    window.onpageshow = function (event) {
+      if (event.persisted) {
+          window.location.reload();
+      }
+    };
+  </script>
+</body>
+
+</html>
