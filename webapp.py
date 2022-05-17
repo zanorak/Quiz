@@ -6,7 +6,7 @@ from flask import session
 
 app = Flask(__name__)
 
-app.secret_key=os.urandom(16)
+app.secret_key=os.environ["SECRET_KEY"]
 
 questions = [
     {
