@@ -7,7 +7,7 @@ from flask import session
 app = Flask(__name__)
 
 app.secret_key=os.environ["SECRET_KEY"]
-
+ 
 questions = [
     {
         "question": "Who is buried in Grant's tomb?",
